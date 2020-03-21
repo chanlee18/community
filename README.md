@@ -8,6 +8,9 @@
 [bootstrap](https://v3.bootcss.com/getting-started)  
 [Github OAuth](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
 [Spring](http://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#boot-features-embedded-database-support)
+[Flyway](https://flywaydb.org/getstarted/firststeps/maven)
+[菜鸟教程]
+[Thymeleaf]
 
 ##学习工具
 [Git](https://git-scm.com/download)
@@ -24,3 +27,6 @@ CREATE TABLE USER{
     GMT_MODIFIED BIGINT
 };
  ```
+```bash
+mvn flyway:migrate
+```

@@ -48,15 +48,16 @@ public class AuthorizeController {
         GithubUser githubUser = githubProvider.getUser(accessToken);
 
         //判断user是否为空，否则会提示"空指针异常"（当user为空时，不可调用getName方法）
-        if(null != githubUser){
+        if(null != githubUser && githubUser.getId() != null){
             //登录成功，写cookie和session
             User user = new User();
             String token = UUID.randomUUID().toString();
+            user.setToken(token);
             user.setName(githubUser.getName());
             user.setAccountId(String.valueOf(githubUser.getId()));
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
-            user.setToken(token);
+            user.setAvatarUrl(githubUser.getAvatar_url());
             userMapper.insert(user);          //插入数据库，相当于写入session
             response.addCookie(new Cookie("token",token));
             System.out.println(token);
